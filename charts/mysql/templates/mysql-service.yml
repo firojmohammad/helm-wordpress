@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-mysql
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 3306
+      targetPort: {{ .Values.mysql1.port }}
+  selector:
+    app: wordpress
+    tier: mysql
+  type:   {{ .Values.mysql1.type }}
+
